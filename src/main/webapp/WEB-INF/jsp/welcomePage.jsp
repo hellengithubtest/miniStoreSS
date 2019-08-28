@@ -9,7 +9,7 @@
       <!-- Include _menu.html -->
           <jsp:include page="menu.jsp"/>
 
-      <h2>Message : <span th:utext="${message}"></span></h2>
+      <h2>Welcome page</h2>
 
    </body>
 </html>
