@@ -67,12 +67,12 @@ public class StoreController {
         return "redirect:/products";
     }
 
-    @GetMapping("product/new")
+    @GetMapping("/product/new")
     public String add(){
         return "add";
     }
 
-    @PostMapping("product/new")
+    @PostMapping("/product/new")
     public String newProduct(@RequestParam("name") String name, @RequestParam("cost") int cost) {
         Product newproductBean = new Product();
         newproductBean.setName(name);

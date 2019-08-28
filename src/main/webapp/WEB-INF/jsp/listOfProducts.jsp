@@ -10,7 +10,7 @@
   </head>
 <body>
 <header>
-    <jsp:include page="header.jsp"/>
+    <jsp:include page="parts/header.jsp"/>
 </header>
 
 <div class="main">
@@ -33,7 +33,7 @@
     </div>
 
 <div class="main">
-    <jsp:include page="/parts/pagination.jsp"/>
+    <jsp:include page="parts/pagination.jsp"/>
 </div>
 
 <div class="main">
@@ -46,13 +46,13 @@
                 </tr>
             </c:forEach>
                 <tr>
-                    <td><a href="./product/new" class="btn btn-outline-primary"> new product </a></td>
+                    <td><a href="/product/new" class="btn btn-outline-primary"> new product </a></td>
                 </tr>
         </table>
     </div>
 </div>
 <footer class="page-footer font-small">
-    <jsp:include page="footer.jsp"/>
+    <jsp:include page="parts/footer.jsp"/>
 </footer>
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

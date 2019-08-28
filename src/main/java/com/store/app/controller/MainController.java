@@ -1,17 +1,27 @@
 package com.store.app.controller;
 
+import com.store.app.service.UserDetailsServiceImpl;
 import com.store.app.utils.WebUtils;
+import org.springframework.http.converter.json.GsonBuilderUtils;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 
 @Controller
 public class MainController {
+
+    AuthenticationManager authenticationManager;
+    //UserDetailsServiceImpl userDetailsService;
 
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
     public String welcomePage(Model model) {
@@ -29,6 +39,26 @@ public class MainController {
         model.addAttribute("userInfo", userInfo);
 
         return "adminPage";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String loginUser(@RequestParam(value = "username") String username,
+                            @RequestParam(value = "password") String password,
+                            Model model) {
+
+        System.out.println("Username" + username);
+        System.out.println("Password" + password);
+        System.out.println("login POST1");
+        final Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        username,
+                        password
+                )
+        );
+        System.out.println("login POST2");
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        //userDetailsService.loadUserByUsername(username);
+        return "loginPage";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

@@ -10,7 +10,7 @@
   </head>
 <body>
 <header>
-    <jsp:include page="header.jsp"/>
+    <jsp:include page="parts/header.jsp"/>
 </header>
 <form method="post" action="${pageContext.request.contextPath}/product/new">
 
@@ -25,7 +25,7 @@
 <button type="submit" class="btn btn-primary">Add</button>
 </form>
 <footer class="page-footer font-small">
-    <jsp:include page="footer.jsp"/>
+    <jsp:include page="parts/footer.jsp"/>
 </footer>
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

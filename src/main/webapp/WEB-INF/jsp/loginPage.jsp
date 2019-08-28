@@ -10,22 +10,23 @@
   </head>
 <body>
 <header>
-    <jsp:include page="header.jsp"/>
+    <jsp:include page="parts/header.jsp"/>
 </header>
-<form method="get" action="/login">
+
+<form  method="POST" action="/login" >
 
     <div class="form-group col-md-2">
-      <label for="inputName">Name</label>
-      <input name="name" type="text" class="form-control" id="inputName">
+      <label for="inputUser">Username</label>
+      <input name="username" type="text" class="form-control" id="inputUsername" value="${username}">
     </div>
     <div class="form-group col-md-2">
-      <label for="inputPassword">Cost</label>
-      <input name="password" type="text" class="form-control" id="inputPassword">
+      <label for="inputPassword">Password</label>
+      <input name="password" type="text" class="form-control" id="inputPassword" value="${password}">
     </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <footer class="page-footer font-small">
-    <jsp:include page="footer.jsp"/>
+    <jsp:include page="parts/footer.jsp"/>
 </footer>
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
