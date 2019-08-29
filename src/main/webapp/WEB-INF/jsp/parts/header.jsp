@@ -16,9 +16,11 @@
             <a class="nav-link" href="/logout">Logout</a>
         </li>
       </sec:authorize>
+      <sec:authorize access="!isAuthenticated()">
       <li>
         <a class="nav-link" href="/login">Login</a>
       </li>
+      </sec:authorize>
       <li>
         <a class="nav-link" href="/about">About</a>
       </li>
