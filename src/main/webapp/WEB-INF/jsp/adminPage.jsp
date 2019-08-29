@@ -1,5 +1,6 @@
 <!doctype html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -13,9 +14,9 @@
     <jsp:include page="parts/header.jsp"/>
 </header>
 
-<h3>Welcome :
-         <span text="${userInfo}"></span>
-      </h3>
+<sec:authorize access="isAuthenticated()">
+    Welcome Back, <sec:authentication property="name"/>
+</sec:authorize>
 
 <footer class="page-footer font-small">
     <jsp:include page="parts/footer.jsp"/>

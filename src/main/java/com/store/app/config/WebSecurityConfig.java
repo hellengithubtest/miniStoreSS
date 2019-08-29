@@ -46,14 +46,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        http.authorizeRequests()
+                .antMatchers("/","/about", "/welcome")
+                .permitAll().and();
+
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/login", "/logout")
+                .antMatchers("/", "/login")
                 .permitAll()
 
         // /userInfo page requires login as ROLE_USER or ROLE_ADMIN.
         // If no login, it will redirect to /login page.
-                .antMatchers("/userInfo")
+                .antMatchers("/userInfo", "/logout")
                 .access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 
         // For ADMIN only.
@@ -80,25 +84,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .usernameParameter("j_username")//
                 .passwordParameter("j_password")
                 // Config for Logout Page
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").invalidateHttpSession(true);
 
         http.formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/j_spring_security_check")
-                .failureUrl("/login?error=true2")//
+                .failureUrl("/login?error=true")//
                 .usernameParameter("j_username")
                 .passwordParameter("j_password")
                 .permitAll().and();
-
-        http.logout()
-                .permitAll()
-                // указываем URL логаута
-                .logoutUrl("/logout")
-                // указываем URL при удачном логауте
-                .logoutSuccessUrl("/login?logout")
-                // делаем не валидной текущую сессию
-                .invalidateHttpSession(true);
-
 
         // Config Remember Me.
         http.authorizeRequests().and() //

@@ -50,7 +50,7 @@ public class MainController {
         return "aboutPage";
     }
 
-    @GetMapping(value = "/logout")
+    @GetMapping(value = "/logoutSuccess")
     public String logoutSuccessfulPage(Model model) {
         model.addAttribute("title", "Logout");
         return "logoutSuccessfulPage";
