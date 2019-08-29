@@ -15,7 +15,7 @@
         <a class="nav-link" href="/logout">Logout</a>
       </li>
       <li>
-        <a class="nav-link" href="/products">About</a>
+        <a class="nav-link" href="/about">About</a>
       </li>
     </ul>
   </div>
