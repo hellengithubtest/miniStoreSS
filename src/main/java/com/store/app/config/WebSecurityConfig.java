@@ -46,13 +46,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests()
-                .antMatchers("/","/about", "/welcome")
-                .permitAll().and();
-
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/login")
+                .antMatchers("/", "/login", "/products", "/about", "/welcome", "/product/*")
                 .permitAll()
 
         // /userInfo page requires login as ROLE_USER or ROLE_ADMIN.

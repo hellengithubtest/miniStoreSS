@@ -6,9 +6,6 @@
         <a class="nav-link" href="/products">Products</a>
       </li>
       <li>
-        <a class="nav-link" href="/userInfo">User Info</a>
-      </li>
-      <li>
         <a class="nav-link" href="/admin">Admin</a>
       </li>
       <li>
