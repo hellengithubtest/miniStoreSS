@@ -12,7 +12,7 @@
 <header>
     <jsp:include page="parts/header.jsp"/>
 </header>
-      <h2>Welcome page</h2>
+      <h2>About page</h2>
 <footer class="page-footer font-small">
     <jsp:include page="parts/footer.jsp"/>
 </footer>

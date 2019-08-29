@@ -62,6 +62,7 @@ public class StoreController {
 
     @PostMapping("/updateProduct")
     public String updateProduct(@RequestParam("id") int id, @RequestParam("name") String name, @RequestParam("cost") int cost){
+
         Product product = new Product(id, name, cost);
         service.update(product);
         return "redirect:/products";

@@ -12,7 +12,7 @@
 <header>
     <jsp:include page="parts/header.jsp"/>
 </header>
-<form method="post" action="${pageContext.request.contextPath}/product/new">
+<form method="post" action="$/product/new">
 
     <div class="form-group col-md-2">
       <label for="inputName">Name</label>

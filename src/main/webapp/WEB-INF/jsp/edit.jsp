@@ -12,7 +12,7 @@
 <header>
     <jsp:include page="parts/header.jsp"/>
 </header>
-<form method="post" action="/updateProduct">
+<form method="POST" action="/updateProduct">
 
     <div class="form-group col-md-2">
      <label for="inputName">Id</label>

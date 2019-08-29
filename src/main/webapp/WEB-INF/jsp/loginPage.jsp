@@ -13,18 +13,21 @@
     <jsp:include page="parts/header.jsp"/>
 </header>
 
-<form  method="POST" action="/login" >
-
-    <div class="form-group col-md-2">
-      <label for="inputUser">Username</label>
-      <input name="username" type="text" class="form-control" id="inputUsername" value="${username}">
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputPassword">Password</label>
-      <input name="password" type="text" class="form-control" id="inputPassword" value="${password}">
-    </div>
-<button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<c:url value="/login" var="loginUrl"/>
+    <form action="j_spring_security_check" method="post">
+        <c:if test="${param.error != null}">
+            <p>Invalid username and password.</p>
+        </c:if>
+        <c:if test="${param.logout != null}">
+            <p>You have been logged out.</p>
+        </c:if>
+        <p><label for="username">Username</label>
+            <input type="text" id="username" name="j_username"/></p>
+        <p><label for="password">Password</label>
+            <input type="password" id="password" name="j_password"/></p>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <button type="submit" class="btn">Log in</button>
+    </form>
 <footer class="page-footer font-small">
     <jsp:include page="parts/footer.jsp"/>
 </footer>
