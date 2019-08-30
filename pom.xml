@@ -5,8 +5,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>miniStoreSS</groupId>
-  <artifactId>miniStore</artifactId>
+  <artifactId>miniStoreSS</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
 
   <name>miniStoreSS</name>
 
@@ -129,6 +130,12 @@
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-taglibs</artifactId>
       <version>5.0.7.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.ibm.mq</groupId>
+      <artifactId>mq-jms-spring-boot-starter</artifactId>
+      <version>2.1.0</version>
     </dependency>
 
   </dependencies>
