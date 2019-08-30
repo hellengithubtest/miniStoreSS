@@ -19,8 +19,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -28,11 +28,13 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-tomcat</artifactId>
       <scope>provided</scope>
     </dependency>
+
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-jasper</artifactId>
@@ -94,16 +96,7 @@
       <artifactId>commons-dbcp2</artifactId>
       <version>2.1.1</version>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
 
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-search-orm</artifactId>
-      <version>5.6.1.Final</version>
-    </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
@@ -131,13 +124,6 @@
       <artifactId>spring-security-taglibs</artifactId>
       <version>5.0.7.RELEASE</version>
     </dependency>
-
-    <dependency>
-      <groupId>com.ibm.mq</groupId>
-      <artifactId>mq-jms-spring-boot-starter</artifactId>
-      <version>2.1.0</version>
-    </dependency>
-
   </dependencies>
 
   <build>

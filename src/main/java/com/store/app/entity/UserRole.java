@@ -16,11 +16,9 @@ public class UserRole {
     @Column(name = "Id", nullable = false)
     private Long Id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "User_ID", nullable = false)
-    private AppUser appUser;
+    @Column(name = "User_Id", nullable = false)
+    private Long userId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Role_Id", nullable = false)
-    private AppRole appRole;
+    @Column(name = "Role_Id", nullable = false)
+    private Long userRole;
 }

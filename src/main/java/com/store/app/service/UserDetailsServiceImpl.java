@@ -1,8 +1,12 @@
 package com.store.app.service;
 
-import com.store.app.dao.AppRoleDAO;
-import com.store.app.dao.AppUserDAO;
+import com.store.app.entity.AppRole;
 import com.store.app.entity.AppUser;
+import com.store.app.entity.UserRole;
+import com.store.app.repository.AppRoleRepository;
+import com.store.app.repository.AppRoleRepository;
+import com.store.app.repository.UserRepository;
+import com.store.app.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,34 +23,24 @@ import java.util.List;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private AppUserDAO appUserDAO;
+    private UserRepository userRepository;
 
     @Autowired
-    private AppRoleDAO appRoleDAO;
+    private UserRoleRepository userRoleRepository;
+
+    @Autowired
+    private AppRoleRepository appRoleRepository;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        AppUser appUser = this.appUserDAO.findUserAccount(userName);
-
-        if (appUser == null) {
-            System.out.println("User not found! " + userName);
-            throw new UsernameNotFoundException("User " + userName + " was not found in the database");
-        }
-
+        AppUser appUser = userRepository.findByUserName(userName);
         System.out.println("Found User: " + appUser);
 
-        // [ROLE_USER, ROLE_ADMIN,..]
-        List<String> roleNames = this.appRoleDAO.getRoleNames(appUser.getUserId());
-
+        List<UserRole> rolesList = userRoleRepository.findRoleIdByUserId(appUser.getUserId());
+        AppRole roleNames = appRoleRepository.findRoleNameByRoleId(rolesList.get(0).getUserRole());
+        System.out.println("Role list" + rolesList);
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
-        if (roleNames != null) {
-            for (String role : roleNames) {
-                // ROLE_USER, ROLE_ADMIN,..
-                GrantedAuthority authority = new SimpleGrantedAuthority(role);
-                grantList.add(authority);
-            }
-        }
-
+        grantList.add(new SimpleGrantedAuthority(roleNames.getRoleName()));
         UserDetails userDetails = (UserDetails) new User(appUser.getUserName(), //
                 appUser.getEncryptedPassword(), grantList);
 
