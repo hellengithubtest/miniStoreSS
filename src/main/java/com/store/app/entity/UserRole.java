@@ -2,11 +2,12 @@ package com.store.app.entity;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "User_Role", uniqueConstraints = {
         @UniqueConstraint(name= "USER_ROLE_UK",
-                columnNames = {"User_Id", "Role_Id"})})
+                columnNames = {"User_Id"})})
 @Data
 public class UserRole {
 
@@ -18,6 +19,10 @@ public class UserRole {
     @Column(name = "User_Id", nullable = false)
     private Long userId;
 
-    @Column(name = "Role_Id", nullable = false)
+    @Column(name = "User_Role", nullable = false)
     private Long userRole;
+
+
+
+
 }
