@@ -1,8 +1,8 @@
 package com.store.app.entity;
 
 import lombok.Data;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "User_Role", uniqueConstraints = {
