@@ -1,13 +1,11 @@
 package com.store.app;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 public class ServletInitializer extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(appClass);
+        return builder.sources(StoreApp.class);
     }
-
-    private static Class<StoreApp> appClass = StoreApp.class;
 }

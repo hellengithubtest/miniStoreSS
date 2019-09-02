@@ -19,7 +19,7 @@ public class StoreService {
     }
 
     public Product findById(long id) {
-        return productRepository.findOne(id);
+        return productRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
     public void save(Product product) {
@@ -27,7 +27,7 @@ public class StoreService {
     }
 
     public void delete(long id) {
-        productRepository.delete(id);
+        productRepository.deleteById(id);
     }
 
     public void update(Product product) {
