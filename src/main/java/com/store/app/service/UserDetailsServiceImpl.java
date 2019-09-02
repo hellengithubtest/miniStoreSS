@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -37,8 +38,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         System.out.println("Found User: " + appUser);
 
         List<UserRole> rolesList = userRoleRepository.findRoleIdByUserId(appUser.getUserId());
-        AppRole roleNames = appRoleRepository.findRoleNameByRoleId(rolesList.get(0).getUserRole());
-        System.out.println("Role list" + rolesList);
+
+        AppRole roleNames = appRoleRepository.findRoleNameByRoleId(rolesList.stream()
+                .filter(bean -> bean.getUserId() == appUser.getUserId())
+                .findFirst()
+                .get()
+                .getUserRole());
+
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
         grantList.add(new SimpleGrantedAuthority(roleNames.getRoleName()));
         UserDetails userDetails = (UserDetails) new User(appUser.getUserName(), //
