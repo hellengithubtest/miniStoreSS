@@ -41,16 +41,16 @@
         <table>
             <c:forEach items="${list}" var="item">
                 <tr>
-                    <td><a href="/product/${item.id}" class="btn btn-primary btn-lg btn-block" > ${item.name} </a></td>
+                    <td><a href="${pageContext.request.contextPath}/product/${item.id}" class="btn btn-primary btn-lg btn-block" > ${item.name} </a></td>
                     <sec:authorize access="isAuthenticated()">
-                        <td><a href="/update/${item.id}" class="btn btn-outline-primary"> Edit </a></td>
-                        <td><a href="/delete/${item.id}" class="btn btn-outline-primary"> Delete </a></td>
+                        <td><a href="${pageContext.request.contextPath}/update/${item.id}" class="btn btn-outline-primary"> Edit </a></td>
+                        <td><a href="${pageContext.request.contextPath}/delete/${item.id}" class="btn btn-outline-primary"> Delete </a></td>
                     </sec:authorize>
                 </tr>
             </c:forEach>
             <sec:authorize access="isAuthenticated()">
                 <tr>
-                    <td><a href="/product/new" class="btn btn-outline-primary"> new product </a></td>
+                    <td><a href="${pageContext.request.contextPath}/product/new" class="btn btn-outline-primary"> new product </a></td>
                 </tr>
             </sec:authorize>
         </table>

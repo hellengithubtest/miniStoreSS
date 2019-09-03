@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 
@@ -22,8 +23,7 @@ public class MainController {
     public String adminPage(Model model, Principal principal) {
 
         User loginedUser = (User) ((Authentication) principal).getPrincipal();
-
-        model.addAttribute("userInfo", loginedUser);
+        model.addAttribute("userInfo", loginedUser.toString());
 
         return "adminPage";
     }
@@ -56,7 +56,7 @@ public class MainController {
 
         User loginedUser = (User) ((Authentication) principal).getPrincipal();
 
-        model.addAttribute("userInfo", loginedUser);
+        model.addAttribute("userInfo", loginedUser.getUsername());
 
         return "userInfoPage";
     }

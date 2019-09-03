@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class StoreController {
+
     private StoreService service;
 
     public StoreController(StoreService service) {
